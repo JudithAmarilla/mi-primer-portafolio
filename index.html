@@ -1,1 +1,225 @@
-<h1> Hola mi nombre es Judith Amarilla y estoy en camino a ser programadora web front end </h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Para Vos 💚</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fdf6e3; /* crema */
+      color: #2e7d32; /* verde */
+      padding: 40px;
+      line-height: 1.6;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .envelope {
+      --duration: 1000ms;
+
+      --shadow-width: calc(var(--envelope-width) * 0.85);
+      --shadow-blur: 15px;
+
+      --envelope-width: 600px;
+      --envelope-height: auto; /* altura automática */
+
+      --envelope-clr-bg: #a5d6a7;
+      --envelope-clr-bg-side: #81c784;
+      --envelope-clr-bg-bottom: #66bb6a;
+      --envelope-clr-bg-top: #4caf50;
+      --envelope-clr-txt: #fff;
+
+      --letter-clr-bg: #fdf6e3; /* fondo crema */
+      --letter-clr-text: #2e7d32; /* verde */
+      --letter-font-size: 1rem;
+
+      --letter-delay: 0ms;
+      --letter-delay-hover: calc(var(--duration) * 1.25);
+
+      /* Altura la dejo flexible */
+      --letter-height: auto;
+      --letter-height-hover: auto;
+
+      --fold-rotate: rotateX(0deg);
+      --fold-zindex-hover: 0;
+      --fold-rotate-hover: rotateX(180deg);
+      --fold-delay: calc(var(--duration) / 2);
+      --fold-delay-hover: calc(var(--duration) * 0.75);
+
+      --front-font-size: 1rem;
+
+      position: relative;
+      width: var(--envelope-width);
+      cursor: pointer;
+      perspective: 1000px;
+    }
+
+    .envelope:hover {
+      --envelope-transform: rotateY(180deg);
+      --fold-rotate: rotateX(180deg);
+      --fold-zindex: var(--fold-zindex-hover);
+      --fold-delay: var(--fold-delay-hover);
+      --letter-delay: var(--letter-delay-hover);
+    }
+
+    .envelope-inner {
+      position: relative;
+      width: 100%;
+      transition: var(--duration) ease-in-out;
+      transition-delay: 0ms;
+      transform-style: preserve-3d;
+      transform: var(--envelope-transform, rotateY(0deg));
+      display: grid;
+    }
+
+    .envelope-front,
+    .envelope-back {
+      grid-area: 1/1;
+      width: 100%;
+      height: 350px;
+      background-color: var(--envelope-clr-bg);
+      backface-visibility: hidden;
+      isolation: isolate;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .envelope-front {
+      color: var(--envelope-clr-txt);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: var(--front-font-size);
+      user-select: none;
+    }
+
+    .envelope-back {
+      background: linear-gradient(135deg, var(--envelope-clr-bg-top), var(--envelope-clr-bg-bottom));
+      transform: rotateY(180deg);
+      padding: 2rem;
+      overflow-y: auto;
+      max-height: 500px;
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+
+    .envelope-back .top-fold {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      background-color: var(--envelope-clr-bg-top);
+      clip-path: polygon(0% 0%, 50% 55%, 100% 0%);
+      transform-origin: top;
+      transition: var(--duration) ease-in-out;
+      transition-delay: var(--fold-delay);
+    }
+
+    .letter {
+      background: var(--letter-clr-bg);
+      color: var(--letter-clr-text);
+      font-size: var(--letter-font-size);
+      line-height: 1.5;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(46, 125, 50, 0.2);
+      box-sizing: border-box;
+      max-height: 450px;
+      overflow-y: auto;
+      white-space: normal;
+      user-select: text;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1 {
+      color: #1b5e20;
+      margin-top: 0;
+      text-align: center;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-style: italic;
+      text-align: center;
+      color: #388e3c;
+    }
+
+    /* Scrollbar para la carta, si es necesario */
+    .letter::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .letter::-webkit-scrollbar-thumb {
+      background-color: #81c784;
+      border-radius: 4px;
+    }
+  .envelope:hover .top-fold {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.envelope-back .top-fold {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background-color: var(--envelope-clr-bg-top);
+  clip-path: polygon(0% 0%, 50% 55%, 100% 0%);
+  transform-origin: top;
+  transition: opacity 0.3s ease;
+}
+
+  </style>
+
+</head>
+<body>
+  <div class="envelope" title="Haz clic para abrir la carta">
+    <div class="envelope-inner">
+      <div class="envelope-front">
+          Felices 26, mi cielo 🎁 
+      </div>
+      <div class="envelope-back">
+        <div class="top-fold"></div>
+        <div class="letter" tabindex="0">
+          <h1>Feliz cumpleaños Corazón💕</h1>
+          <p>Quiero decirte que te amo muchísimo. Gracias a vos viví muchas cosas por primera vez, cosas que jamás imaginé sentir o experimentar, y eso tiene un valor enorme en mi corazón.</p>
+          <p>Aunque a veces tengamos discusiones o diferencias, nunca dejo de tenerte cariño. Sé que no somos perfectos, que ambos cometemos errores y que a veces fallamos… pero también sé que lo importante es tener la voluntad de mejorar, de crecer juntos y de no soltar la mano del otro en los momentos difíciles.</p>
+          <p>Estoy tan orgullosa de vos, de todo lo que lograste hasta ahora, del esfuerzo que ponés cada día. Sé que todo ese sacrificio un día va a tener su recompensa —va a llegar desde arriba, cuando sea el momento justo.</p>
+          <p>Espero que te guste esta carta digital. Gracias por ser parte de mi vida.</p>
+          <footer>
+            Con cariño,<br>
+            💕 Tu novia<br><br>
+            <em>(Mientras leés, dejá que la canción hable también por mí, es muy emotiva porque expresa bien los sentimientos que quiero transmitirte...)</em>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const envelope = document.querySelector('.envelope');
+    envelope.addEventListener('click', () => {
+      const inner = envelope.querySelector('.envelope-inner');
+      if (inner.style.transform === 'rotateY(180deg)') {
+        inner.style.transform = 'rotateY(0deg)';
+      } else {
+        inner.style.transform = 'rotateY(180deg)';
+      }
+    });
+  </script>
+</body>
